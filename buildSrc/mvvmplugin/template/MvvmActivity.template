@@ -1,0 +1,47 @@
+package ${applicaitionId}.${packageName}.activity;
+
+import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
+import ${applicaitionId}.R;
+import ${applicaitionId}.base.BaseActivity;
+import ${applicaitionId}.base.BaseViewModel;
+import ${applicaitionId}.databinding.Activity${functionName}Binding;
+import ${applicaitionId}.${packageName}.viewmodel.${functionName}VM;
+
+/**
+ * @Author: ${author}
+ * @Date: ${date}
+ * @Description:
+ */
+public class ${functionName}Activity extends BaseActivity {
+
+    public static final String TAG = ${functionName}Activity.class.getSimpleName();
+
+    private ${functionName}VM mViewModel;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Activity${functionName}Binding binding = DataBindingUtil.setContentView(this, R.layout.${xmlName});
+        binding.setViewmodel(getViewModel());
+
+        init();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public ${functionName}VM getViewModel(){
+        if (mViewModel == null) {
+            mViewModel = ViewModelProviders.of(this).get(${functionName}VM.class);
+        }
+        return mViewModel;
+    }
+}

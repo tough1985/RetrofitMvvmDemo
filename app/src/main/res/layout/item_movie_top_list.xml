@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="movieListItemVM"
+            type="me.xiba.startlearnmvvm.movie.viewmodel.MovieListItemVM" />
+        <variable
+            name="movieListItemEvent"
+            type="me.xiba.startlearnmvvm.movie.event.MovieListItemEvent"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:background="@drawable/recycler_item_selector"
+        android:padding="10dp"
+        android:onClick="@{(view) -> movieListItemEvent.onClick(view, movieListItemVM)}">
+
+        <ImageView
+            android:id="@+id/item_top_movie_IV"
+            android:layout_width="100dp"
+            android:layout_height="148dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            app:imageUrl="@{movieListItemVM.doubanMovieItem.images.large}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_top_movie_IV"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_top_movie_title_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:lines="1"
+                android:text="@{movieListItemVM.doubanMovieItem.title}"
+                android:textColor="@color/movie_title"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/item_top_movie_rating_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text='@{movieListItemVM.doubanMovieItem.rating.average + ""}'
+                android:textColor="@color/movie_rating"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_top_movie_director_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lines="1"
+                android:text='@{"导演：" + (movieListItemVM.doubanMovieItem == null ? "" : movieListItemVM.doubanMovieItem.getDirectorNames())}'
+                android:textColor="@color/text"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/item_top_movie_cast_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lines="1"
+                android:text='@{"演员：" + (movieListItemVM.doubanMovieItem == null ? "" : movieListItemVM.doubanMovieItem.getCastNames())}'
+                android:textColor="@color/text"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

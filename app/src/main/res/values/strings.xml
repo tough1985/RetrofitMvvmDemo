@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StartLearnMvvm</string>
+
+    <string name="net_error">网络不给力</string>
+</resources>

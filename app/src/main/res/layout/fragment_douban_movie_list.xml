@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="me.xiba.startlearnmvvm.movie.viewmodel.DoubanMovieListVM"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.ajguan.library.EasyRefreshLayout
+            android:id="@+id/movie_top_list_ERL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/movie_top_list_RV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{viewmodel.dataOf}"/>
+        </com.ajguan.library.EasyRefreshLayout>
+
+    </LinearLayout>
+</layout>
